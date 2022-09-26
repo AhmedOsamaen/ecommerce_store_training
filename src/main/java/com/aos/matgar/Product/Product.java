@@ -1,5 +1,6 @@
 package com.aos.matgar.Product;
 
+import com.aos.matgar.Order.Order;
 import com.aos.matgar.Store.Store;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -18,6 +19,10 @@ public class Product {
     @JsonIgnore
     @ManyToMany(mappedBy = "products")
     private Set<Store> stores;
+
+    @JsonIgnore
+    @ManyToMany(mappedBy = "products")
+    private Set<Order> orders;
 
     public Product() {
     }

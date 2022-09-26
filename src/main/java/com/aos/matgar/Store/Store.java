@@ -1,5 +1,6 @@
 package com.aos.matgar.Store;
 
+import com.aos.matgar.Address.Address;
 import com.aos.matgar.Product.Product;
 import com.aos.matgar.User.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -31,6 +32,10 @@ public class Store {
     @JsonIgnore
     @JoinColumn(name = "owner_id", referencedColumnName = "user_id")
     private User user;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "store" , cascade = CascadeType.ALL)
+    private Set<Address> addresses;
 
 
 
