@@ -2,7 +2,6 @@ package com.aos.matgar.Order;
 
 import com.aos.matgar.Address.Address;
 import com.aos.matgar.Product.Product;
-import com.aos.matgar.Product.Product1;
 import com.aos.matgar.User.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
@@ -58,5 +57,8 @@ public class Order {
     @JoinColumn(name = "user_id", referencedColumnName = "user_id")
     private User user;
 
+
+    @Column(name = "stage")
+    private Stage stage;
 
 }
