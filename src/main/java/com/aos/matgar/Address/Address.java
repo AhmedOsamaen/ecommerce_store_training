@@ -2,11 +2,13 @@ package com.aos.matgar.Address;
 
 import com.aos.matgar.Store.Store;
 import com.aos.matgar.User.User;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.*;
+import lombok.Data;
 
 import javax.persistence.*;
 
 @Entity
+@Data
 @Table(name = "ADDRESS")
 public class Address {
     @Id
@@ -48,94 +50,4 @@ public class Address {
     @JoinColumn(name = "store_id", referencedColumnName = "store_id")
     private Store store;
 
-    public Address() {
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getStreet() {
-        return street;
-    }
-
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
-    public String getBuildingNum() {
-        return buildingNum;
-    }
-
-    public void setBuildingNum(String buildingNum) {
-        this.buildingNum = buildingNum;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getTown() {
-        return town;
-    }
-
-    public void setTown(String town) {
-        this.town = town;
-    }
-
-    public String getFullAdrs() {
-        return fullAdrs;
-    }
-
-    public void setFullAdrs(String fullAdrs) {
-        this.fullAdrs = fullAdrs;
-    }
-
-    public String getPostalCode() {
-        return postalCode;
-    }
-
-    public void setPostalCode(String postalCode) {
-        this.postalCode = postalCode;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public Store getStore() {
-        return store;
-    }
-
-    public void setStore(Store store) {
-        this.store = store;
-    }
 }
