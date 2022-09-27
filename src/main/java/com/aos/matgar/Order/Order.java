@@ -55,6 +55,16 @@ public class Order {
     @JoinColumn(name = "user_id", referencedColumnName = "user_id")
     private User user;
 
+    @Column(name = "stage")
+    private Stage stage;
+
+
+//    public enum Stage {
+//        CART, CONFIRMATION, PAYMENT, REVIEW,PLACED,DELIVERY,DELIVERED;
+//    }
+
+
+
     public Order() {
     }
 
