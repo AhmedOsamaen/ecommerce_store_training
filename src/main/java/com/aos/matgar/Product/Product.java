@@ -28,9 +28,9 @@ public class Product {
     @OneToMany(mappedBy = "product")
 	Set<order_product> order_products;
 	
-    @JsonIgnore
-    @ManyToMany(mappedBy = "products" ,fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<Store> stores;
+//    @JsonIgnore
+//    @ManyToMany(mappedBy = "products" ,fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//    private Set<Store> stores;
 
 
     String name;
@@ -66,5 +66,4 @@ public class Product {
     @JoinColumn(name = "store_id", referencedColumnName = "store_id")
     Store store;
     //    Set<Review> reviews;
-    Product(){};
 }
