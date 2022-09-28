@@ -2,9 +2,12 @@ package com.aos.matgar.Product;
 
 import com.aos.matgar.Order.Order;
 import com.aos.matgar.Store.Store;
+import com.aos.matgar.order_product.order_product;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -15,14 +18,13 @@ public class Product {
     @Column(name = "product_id")
     private long id;
 
-
+    @OneToMany(mappedBy = "product")
+	Set<order_product> order_products;
+	
     @JsonIgnore
-    @ManyToMany(mappedBy = "products")
+    @ManyToMany(mappedBy = "products" ,fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Store> stores;
 
-    @JsonIgnore
-    @ManyToMany(mappedBy = "products")
-    private Set<Order> orders;
 
     public Product() {
     }
