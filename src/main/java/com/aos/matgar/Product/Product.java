@@ -48,9 +48,9 @@ public class Product {
     String images;//delimited by ;
     String model;
 
-    @JsonIgnore
-    @ManyToMany(mappedBy = "products")
-    Set<Order> orders;
+//    @JsonIgnore
+//    @ManyToMany(mappedBy = "products")
+//    Set<Order> orders;
 
     @JsonIgnore
     @ManyToMany(mappedBy = "products")
