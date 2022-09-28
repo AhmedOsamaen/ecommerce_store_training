@@ -6,6 +6,7 @@ import com.aos.matgar.Product.Product;
 import com.aos.matgar.User.User;
 import com.aos.matgar.order_product.order_product;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Data;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -13,6 +14,7 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
+@Data
 @Table(name = "MATGAR_ORDER")
 public class Order {
     @Id
@@ -56,8 +58,9 @@ public class Order {
 
     
 
-    public Order() {
-    }
 
-    
+
+    @Column(name = "stage")
+    private Stage stage;
+
 }
