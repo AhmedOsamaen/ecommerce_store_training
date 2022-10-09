@@ -39,7 +39,7 @@ public class Order {
     private Date createDate;
 
     @Column(name="arrival_date")
-    private Date arrival_date;
+    private Date arrivalDate;
 
     @Column(name = "delivery_method")
     private String deliveryMethod;
