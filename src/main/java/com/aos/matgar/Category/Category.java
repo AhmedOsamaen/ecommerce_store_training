@@ -5,14 +5,14 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.util.Set;
-@Entity
 @Data
-@Table(name = "CATEGORY")
+@Entity
+@Table(name = "MATGAR_CATEGORY")
 public class Category {
     @Id
     @GeneratedValue
     @Column(name = "category_id")
-    String id;
+    long id;
     String name;
     String shortDescription;
     String longDescription;

@@ -10,29 +10,17 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
-
-
-import java.util.List;
-
 import java.sql.Date;
 import java.util.HashSet;
 import java.util.Set;
 @Data
 @Entity
+@Table(name="MATGAR_PRODUCT")
 public class Product {
     @Id
     @GeneratedValue
     @Column(name = "product_id")
-    private long id;
-
-    @OneToMany(mappedBy = "product")
-	Set<order_product> order_products;
-	
-//    @JsonIgnore
-//    @ManyToMany(mappedBy = "products" ,fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-//    private Set<Store> stores;
-
-
+    long id;
     String name;
     @Column(name = "short_description")
     String shortDescription;//it will have more info for the product
@@ -42,27 +30,28 @@ public class Product {
     int quantity;
     //will make discount a class but not a table
     int discount;// 20=20%
+    @Column(name = "maximum_discount_value")
     int maximumDiscountValue;
+    @Column(name = "discount_expiration_date")
     Date discountExpirationDate;
     /////////
     String images;//delimited by ;
     String model;
 
-//    @JsonIgnore
-//    @ManyToMany(mappedBy = "products")
-//    Set<Order> orders;
-
     @JsonIgnore
     @ManyToMany(mappedBy = "products")
     Set<Brand> brands= new HashSet<>();
-
 
     @JsonIgnore
     @ManyToMany(mappedBy = "products")
     Set<Category> categories;
 
-    @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnore
+    @OneToMany(mappedBy = "product")
+    Set<order_product> order_products;
+
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "store_id", referencedColumnName = "store_id")
     Store store;
     //    Set<Review> reviews;

@@ -7,13 +7,14 @@ import javax.persistence.*;
 import java.util.Set;
 @Entity
 @Data
-@Table(name = "BRAND")
+@Table(name = "MATGAR_BRAND")
 public class Brand {
     @Id
     @GeneratedValue
     @Column(name = "brand_id")
-    String id;
+    long id;
     String name;
+    @Column(name = "short_description")
     String shortDescription;
     @ManyToMany
     @JoinTable(
