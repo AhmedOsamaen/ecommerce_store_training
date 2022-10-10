@@ -23,9 +23,9 @@ public class User {
 
     // Saleh 
     @ManyToOne
-    @MapsId("id")
-    @JoinColumn(name = "id")
-    Group group;
+   
+    @JoinColumn(name = "group_id")
+    private Group group;
     // END
     
     @JsonIgnore
@@ -49,5 +49,64 @@ public class User {
     public User() {
     }
 
+	public User(String name, int age, String email, String username, String password) {
+		super();
+		this.name = name;
+		this.age = age;
+		this.email = email;
+		this.username = username;
+		this.password = password;
+	}
+
+	
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	
    
 }
