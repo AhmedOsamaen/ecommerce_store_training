@@ -40,13 +40,13 @@ public class Address {
     @Column(name = "postal_code")
     private String postalCode;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnore
+    @ManyToOne()
+//    @JsonIgnore
     @JoinColumn(name = "user_id", referencedColumnName = "user_id")
     private User user;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnore
+    @ManyToOne()
+//    @JsonIgnore
     @JoinColumn(name = "store_id", referencedColumnName = "store_id")
     private Store store;
 

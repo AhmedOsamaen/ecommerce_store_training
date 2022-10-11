@@ -1,6 +1,8 @@
 package com.aos.matgar.Order;
 
 import com.aos.matgar.Address.Address;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,7 +13,7 @@ import java.util.List;
 
 @Service
 public class OrderService {
-
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
     @Autowired
     private OrderRepository orderRepository;
 
@@ -28,6 +30,7 @@ public class OrderService {
             orderRepository.save(order);
             return new ResponseEntity("Saved Successfully", HttpStatus.OK);
         }catch (Exception e){
+            logger.error("Failure in Order Save",e);
             return new ResponseEntity("Failure in Order Save", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
