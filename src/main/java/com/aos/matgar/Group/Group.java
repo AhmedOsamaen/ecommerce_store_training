@@ -2,6 +2,7 @@ package com.aos.matgar.Group;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -19,9 +20,13 @@ import javax.persistence.Table;
 import com.aos.matgar.Group_Rule.Group_Rule;
 import com.aos.matgar.User.User;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
 @Entity
+@Data
 @Table(name="MATGAR_Group") 
 public class Group {
 
@@ -34,33 +39,12 @@ public class Group {
 
 	@OneToMany(targetEntity = User.class,cascade = CascadeType.ALL)
 	@JoinColumn(name = "group_id" , referencedColumnName = "group_id")
+	@JsonManagedReference
 	private List<User> users;
 	
-	@OneToMany(mappedBy = "group")
-	List<Group_Rule> group_Rules;
+	@OneToMany(targetEntity = Group_Rule.class ,mappedBy = "group",cascade = CascadeType.ALL)
+	@JsonIgnore
+	Set<Group_Rule> group_Rules;
 	
-	public Group() {
-		
-	}
-
-	public Group(String name) {
-		super();
-		this.name = name;
-	}
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
 	
 }
