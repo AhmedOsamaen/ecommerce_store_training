@@ -40,6 +40,16 @@ public class ProductService {
         }
     }
 
+    public ResponseEntity getProductByStoreId(long id){
+        try {
+            logger.info("Getting All Products for ID: "+id);
+            return new ResponseEntity(productRepository.findAllByStoreId(id), HttpStatus.OK);
+        }catch (Exception e) {
+            logger.info("Failure in getting all Products Info for ID: "+id);
+            return new ResponseEntity("Error While getting Products Id:"+id+" with exception" + e, HttpStatus.EXPECTATION_FAILED);
+        }
+    }
+
     public ResponseEntity addProduct(Map<String,Object> requestMap){
         try {
             Product product = mapper.convertValue(requestMap,Product.class);

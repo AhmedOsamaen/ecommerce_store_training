@@ -25,6 +25,11 @@ public class StoreController {
         return storeService.getStoreById(Long.valueOf(storeId));
     }
 
+    @GetMapping("/getStoreByUserId/{id}")
+    public ResponseEntity getStoreByUserId(@PathVariable long id){
+        return storeService.getStoresByUserId(id);
+    }
+
     @PostMapping("saveStore")
     public ResponseEntity saveStore(@RequestBody Store store){
         return storeService.saveStore(store);
