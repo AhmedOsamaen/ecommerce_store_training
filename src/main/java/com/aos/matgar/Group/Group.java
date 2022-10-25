@@ -31,7 +31,7 @@ import lombok.Data;
 public class Group {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue()
 	@Column(name = "group_id")
 	private long id;
 	
