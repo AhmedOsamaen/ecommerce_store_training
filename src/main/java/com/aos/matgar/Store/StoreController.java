@@ -35,8 +35,8 @@ public class StoreController {
         return storeService.saveStore(store);
     }
 
-    @PostMapping("deleteStore")
-    public ResponseEntity deleteStore(@RequestBody Map store){
-        return storeService.deleteStoreById(Long.valueOf(store.get("storeId").toString()) );
+    @GetMapping("deleteStoreById/{id}")
+    public ResponseEntity deleteStore(@PathVariable("id")long storeId){
+        return storeService.deleteStoreById(storeId);
     }
 }
