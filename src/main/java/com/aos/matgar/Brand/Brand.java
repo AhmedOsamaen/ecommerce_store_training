@@ -16,6 +16,7 @@ public class Brand {
     String name;
     @Column(name = "short_description")
     String shortDescription;
+
     @ManyToMany
     @JoinTable(
             name = "brands_products",

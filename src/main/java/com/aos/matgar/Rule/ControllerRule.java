@@ -15,6 +15,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.List;
 
 @RestController
+
 public class ControllerRule {
 
 	@Autowired
@@ -22,10 +23,7 @@ public class ControllerRule {
 	
 	@RequestMapping("getAllRules")
 	public List<Rule> getAllRules() throws JsonMappingException, JsonProcessingException {
-		
-		
 		 return serviceRule.findAll();
-		 
 	}
 	
 	@RequestMapping("Rule/getRuleById/{id}")

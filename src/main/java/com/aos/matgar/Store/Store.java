@@ -21,6 +21,7 @@ public class Store {
     @Column(name = "name")
     private String name;
 
+    @JsonIgnore
     @OneToMany(mappedBy="store")
     private Set<Product> products;
 

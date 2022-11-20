@@ -43,7 +43,8 @@ public class ProductService {
     public ResponseEntity addProduct(Map<String,Object> requestMap){
         try {
             Product product = mapper.convertValue(requestMap,Product.class);
-            logger.info("Getting All Products for ID: "+product.id);
+//            logger.info("Adding Product with ID: "+product.id);
+            logger.info("Adding Product ");
             return new ResponseEntity(productRepository.save(product), HttpStatus.OK);
         }catch (Exception e) {
             logger.info("Failure in Creating/Updating Product ");

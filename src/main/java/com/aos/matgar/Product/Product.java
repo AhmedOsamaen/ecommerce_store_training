@@ -40,7 +40,7 @@ public class Product {
 
     @JsonIgnore
     @ManyToMany(mappedBy = "products")
-    Set<Brand> brands= new HashSet<>();
+    Set<Brand> brands;
 
     @JsonIgnore
     @ManyToMany(mappedBy = "products")
@@ -50,8 +50,7 @@ public class Product {
     @OneToMany(mappedBy = "product")
     Set<order_product> order_products;
 
-    @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "store_id", referencedColumnName = "store_id")
     Store store;
     //    Set<Review> reviews;

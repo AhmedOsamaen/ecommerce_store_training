@@ -22,7 +22,7 @@ public class CategoryController {
         return categoryService.getCategoryById(id);
     }
 
-    @PostMapping("addCategory")
+    @PostMapping("/addCategory")
     public ResponseEntity addCategory(@RequestBody Map<String,Object> requestMap){
         return categoryService.addCategory(requestMap);
     }
