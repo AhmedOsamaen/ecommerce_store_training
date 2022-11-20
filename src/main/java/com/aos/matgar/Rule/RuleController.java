@@ -15,12 +15,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.List;
 
 @RestController
-<<<<<<< HEAD:src/main/java/com/aos/matgar/Rule/ControllerRule.java
-
-public class ControllerRule {
-=======
 public class RuleController {
->>>>>>> 2cac2af03f2e19d68464963add7620d974f37538:src/main/java/com/aos/matgar/Rule/RuleController.java
 
 	@Autowired
 	private RuleService serviceRule;

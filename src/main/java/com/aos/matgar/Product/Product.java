@@ -50,7 +50,7 @@ public class Product {
     @JsonIgnore
     @OneToMany(mappedBy = "product")
     Set<order_product> order_products;
-    
+
     @ManyToOne
     @JoinColumn(name = "store_id", referencedColumnName = "store_id")
     Store store;
