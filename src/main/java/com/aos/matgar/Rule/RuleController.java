@@ -15,18 +15,22 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.List;
 
 @RestController
+<<<<<<< HEAD:src/main/java/com/aos/matgar/Rule/ControllerRule.java
 
 public class ControllerRule {
+=======
+public class RuleController {
+>>>>>>> 2cac2af03f2e19d68464963add7620d974f37538:src/main/java/com/aos/matgar/Rule/RuleController.java
 
 	@Autowired
-	private ServiceRule serviceRule;
+	private RuleService serviceRule;
 	
 	@RequestMapping("getAllRules")
 	public List<Rule> getAllRules() throws JsonMappingException, JsonProcessingException {
 		 return serviceRule.findAll();
 	}
 	
-	@RequestMapping("Rule/getRuleById/{id}")
+	@RequestMapping("getRuleById/{id}")
 	public Optional<Rule> getRuleById(@PathVariable String id) throws JsonMappingException, JsonProcessingException {
 		
 		
@@ -34,25 +38,12 @@ public class ControllerRule {
 		 
 	}
 	
-	@RequestMapping("Rule/addRule")
-	public Rule addRule(@RequestBody String pBody) throws JsonMappingException, JsonProcessingException {
-		
-		ObjectMapper mapper = new ObjectMapper();
-		Rule lib = mapper.readValue(pBody, Rule.class);
-		System.out.println(lib.getDescription());
-		 return serviceRule.addRule(lib);
-		 
+	@RequestMapping("addRule")
+	public Rule addRule(@RequestBody Rule rule) {
+		 return serviceRule.addRule(rule);
 	}
 	
-	@RequestMapping("Rule/updateRule")
-	public Rule updateRule(@RequestBody String pBody) throws JsonMappingException, JsonProcessingException {
-		ObjectMapper mapper = new ObjectMapper();
-		Rule lib = mapper.readValue(pBody, Rule.class);
-		 return serviceRule.updateRule(lib);
-		 
-	}
-	
-	@RequestMapping("Rule/deleteRuleByID/{id}")
+	@RequestMapping("deleteRuleByID/{id}")
 	public void deleteByID(@PathVariable String id) throws JsonMappingException, JsonProcessingException {
 		
 		

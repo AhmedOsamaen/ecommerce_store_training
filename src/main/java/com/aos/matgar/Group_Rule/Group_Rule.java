@@ -16,26 +16,24 @@ import javax.persistence.Table;
 import com.aos.matgar.Group.Group;
 import com.aos.matgar.Rule.Rule;
 
-@Entity
-@Table(name="Group_Rule") 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.Data;
 
+@Entity
+@Data
+@Table(name="Group_Rule")
 public class Group_Rule {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int group_rule_id;
-
-//	@OneToMany(targetEntity = User.class,cascade = CascadeType.ALL)
-//	@JoinColumn(name = "group_rule_id" , referencedColumnName = "group_rule_id")
-//	private List<User> users;
 	
     @ManyToOne
-    @MapsId("group_id")
     @JoinColumn(name = "group_id")
     Group group;
 
     @ManyToOne
-    @MapsId("rule_id")
     @JoinColumn(name = "rule_id")
     Rule rule;
 

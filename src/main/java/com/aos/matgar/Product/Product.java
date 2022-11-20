@@ -10,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -49,7 +50,7 @@ public class Product {
     @JsonIgnore
     @OneToMany(mappedBy = "product")
     Set<order_product> order_products;
-
+    
     @ManyToOne
     @JoinColumn(name = "store_id", referencedColumnName = "store_id")
     Store store;

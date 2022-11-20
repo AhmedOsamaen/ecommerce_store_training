@@ -8,19 +8,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ServiceGroup {
+public class GroupService {
 
 	@Autowired
-	private RepoGroup repoGroup;
+	private GroupRepository repoGroup;
 	
 	public List<Group> findAll() {
 		return repoGroup.findAll();
 		
 	}
 
-	protected Group addGroup(Group Group) {
-
-		return repoGroup.save(Group);
+	public Group addGroup(Group group) {
+		System.out.println("group" + group);
+		return repoGroup.save(group);
 			
 		}
 	
@@ -31,18 +31,15 @@ public class ServiceGroup {
 			
 		}
 	
-	protected Optional<Group> findById(String id) {
+	public Optional<Group> findById(String id) {
 
-		
 		return repoGroup.findById(id);
 			
 		}
-	
-	protected Group updateGroup(Group Group) {
 
-		
-		return repoGroup.save(Group);
-			
-		}
-	
+	public Boolean isExsiting(Long id) {
+		System.out.println(id);
+		return repoGroup.existsById(id);
+
+	}
 }

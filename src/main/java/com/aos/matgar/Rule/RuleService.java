@@ -8,10 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ServiceRule {
+public class RuleService {
 
 	@Autowired
-	private RepoRule repoRule;
+	private RuleRepository repoRule;
 	
 	public List<Rule> findAll() {
 		return repoRule.findAll();
@@ -31,18 +31,17 @@ public class ServiceRule {
 			
 		}
 	
-	protected Optional<Rule> findById(String id) {
+	public Optional<Rule> findById(String id) {
 
 		
 		return repoRule.findById(id);
 			
 		}
-	
-	protected Rule updateRule(Rule rule) {
 
-		
-		return repoRule.save(rule);
-			
-		}
+	public Boolean isExsiting(Long id) {
+
+		return repoRule.existsById(id);
+
+	}
 	
 }

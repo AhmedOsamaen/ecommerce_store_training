@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Set;
 
 @Entity
@@ -25,8 +26,8 @@ public class Store {
     @OneToMany(mappedBy="store")
     private Set<Product> products;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnore
+    @ManyToOne()
+//    @JsonIgnore
     @JoinColumn(name = "owner_id", referencedColumnName = "user_id")
     private User user;
 

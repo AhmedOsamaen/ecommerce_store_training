@@ -26,12 +26,12 @@ public class Order {
 	List<order_product> order_products;
 	
    
-    @OneToOne(targetEntity = Address.class,cascade = CascadeType.ALL)
+    @OneToOne(targetEntity = Address.class,cascade = CascadeType.MERGE )
     @JoinColumn(name = "address_id",referencedColumnName = "address_id")
     private Address address;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnore
+    @ManyToOne()
+//    @JsonIgnore
     @JoinColumn(name = "user_id", referencedColumnName = "user_id")
     private User user;
     

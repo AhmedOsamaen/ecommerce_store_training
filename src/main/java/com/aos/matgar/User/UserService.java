@@ -8,10 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ServiceUser {
+public class UserService {
 
 	@Autowired
-	private RepoUser repoUser;
+	private UserRepository repoUser;
 	
 	public List<User> findAll() {
 		return repoUser.findAll();
@@ -21,7 +21,6 @@ public class ServiceUser {
 	protected User addUser(User User) {
 
 		return repoUser.save(User);
-			
 		}
 	
 	protected void deleteByID(String id) {
@@ -35,13 +34,6 @@ public class ServiceUser {
 
 		
 		return repoUser.findById(id);
-			
-		}
-	
-	protected User updateUser(User User) {
-
-		
-		return repoUser.save(User);
 			
 		}
 	

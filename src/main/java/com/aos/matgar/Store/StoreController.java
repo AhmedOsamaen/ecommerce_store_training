@@ -25,13 +25,18 @@ public class StoreController {
         return storeService.getStoreById(Long.valueOf(storeId));
     }
 
+    @GetMapping("/getStoreByUserId/{id}")
+    public ResponseEntity getStoreByUserId(@PathVariable long id){
+        return storeService.getStoresByUserId(id);
+    }
+
     @PostMapping("saveStore")
     public ResponseEntity saveStore(@RequestBody Store store){
         return storeService.saveStore(store);
     }
 
-    @PostMapping("deleteStore")
-    public ResponseEntity deleteStore(@RequestBody Map store){
-        return storeService.deleteStoreById(Long.valueOf(store.get("storeId").toString()) );
+    @GetMapping("deleteStoreById/{id}")
+    public ResponseEntity deleteStore(@PathVariable("id")long storeId){
+        return storeService.deleteStoreById(storeId);
     }
 }

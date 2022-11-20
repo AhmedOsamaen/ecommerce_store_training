@@ -1,4 +1,4 @@
-package com.aos.matgar.Group;
+package com.aos.matgar.Rule;
 
 import java.util.ArrayList;
 import java.util.Optional;
@@ -9,15 +9,17 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.transaction.annotation.Transactional;
 
-public interface RepoGroup extends 
-JpaRepository<Group, String>{
+public interface RuleRepository extends 
+JpaRepository<Rule, String>{
 	
-	@Query(value = "SELECT * FROM MATGAR_Group WHERE group_id = ?1" , nativeQuery = true)
-	Optional<Group> findById(String id);
+	@Query(value = "SELECT * FROM MATGAR_Rule WHERE rule_id = ?1" , nativeQuery = true)
+	Optional<Rule> findById(String id);
 	
 	
 	@Transactional
 	@Modifying
-	@Query(value = "DELETE FROM MATGAR_Group WHERE group_id = ?1 " , nativeQuery = true)
+	@Query(value = "DELETE FROM MATGAR_Rule WHERE rule_id = ?1 " , nativeQuery = true)
 	void deleteById( String id );
+
+    Boolean existsById(Long id);
 }
