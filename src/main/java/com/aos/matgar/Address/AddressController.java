@@ -25,6 +25,11 @@ public class AddressController {
         return addressService.getAddressById(Long.valueOf(addressId));
     }
 
+    @GetMapping("getAddressByUserId/{userId}")
+    public List<Address> getAddressByUserId(@PathVariable("userId")String userId){
+        return addressService.getAddressByUserId(Long.valueOf(userId));
+    }
+
     @PostMapping("saveAddress")
     public ResponseEntity saveAddress(@RequestBody Address address){
         return addressService.saveAddress(address);

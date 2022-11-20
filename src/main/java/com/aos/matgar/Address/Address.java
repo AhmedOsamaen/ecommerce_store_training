@@ -42,7 +42,7 @@ public class Address {
 
     @ManyToOne()
 //    @JsonIgnore
-    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
+    @JoinColumn(name = "user_id", referencedColumnName = "user_id" )
     private User user;
 
     @ManyToOne()

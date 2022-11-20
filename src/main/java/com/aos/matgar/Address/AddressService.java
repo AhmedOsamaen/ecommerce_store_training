@@ -1,5 +1,7 @@
 package com.aos.matgar.Address;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,7 +12,7 @@ import java.util.List;
 
 @Service
 public class AddressService {
-
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
     @Autowired
     private AddressRepository addressRepository;
 
@@ -22,11 +24,17 @@ public class AddressService {
         return addressRepository.findFirstById(addressId);
     }
 
+    public List<Address> getAddressByUserId(long userId){
+        return addressRepository.findAllByUserId(userId);
+    }
+
+    @Transactional
     public ResponseEntity saveAddress(Address address){
         try {
             addressRepository.save(address);
             return new ResponseEntity("Saved Successfully", HttpStatus.OK);
         }catch (Exception e){
+            logger.error("Failure in Address Save",e);
             return new ResponseEntity("Failure in Address Save", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
