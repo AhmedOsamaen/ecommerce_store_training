@@ -12,8 +12,11 @@ import javax.persistence.Table;
 
 import com.aos.matgar.Order.Order;
 import com.aos.matgar.Product.Product;
+import lombok.Data;
+
 @Entity
 @Table(name = "order_products")
+@Data
 public class order_product {
 
 	@Id
@@ -22,16 +25,14 @@ public class order_product {
     private long id;
 
 	@ManyToOne
-    @MapsId("order_id")
     @JoinColumn(name = "order_id")
     Order order;
 	 
     @ManyToOne
-    @MapsId("product_id")
     @JoinColumn(name = "product_id")
     Product product;
 
-    int Quantity;
+    Integer Quantity;
     
    
 }

@@ -1,6 +1,8 @@
 package com.aos.matgar.order_product;
 
 import com.aos.matgar.Group.Group;
+import com.aos.matgar.Order.Order;
+import com.aos.matgar.Product.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,11 +27,18 @@ public class order_productService {
 		}
 	
 	protected void deleteByID(String id) {
-
 		repoGroup.deleteById(id);
 		return ;
-			
 		}
+
+	protected void deleteByOrderProduct(Order order, Product product) {
+		try {
+			order_product order_product = repoGroup.findFirstByOrderAndProduct(order,product);
+			repoGroup.deleteById(order_product.getId());
+		}catch (Exception e){
+			System.out.println(e);
+		}
+	}
 	
 	public Optional<order_product> findById(String id) {
 
@@ -41,5 +50,13 @@ public class order_productService {
 		System.out.println(id);
 		return repoGroup.existsById(id);
 
+	}
+
+	public long getCartCount(Order order){
+		return repoGroup.countByOrder(order);
+	}
+
+	public long getCartCountByOrderAndProduct(Order order, Product product){
+		return repoGroup.countByOrderAndProduct(order,product);
 	}
 }
