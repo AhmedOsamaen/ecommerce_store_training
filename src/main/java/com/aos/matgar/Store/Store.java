@@ -23,7 +23,7 @@ public class Store {
     private String name;
 
     @JsonIgnore
-    @OneToMany(mappedBy="store")
+    @OneToMany(mappedBy="store" ,cascade = CascadeType.ALL)
     private Set<Product> products;
 
     @ManyToOne()
