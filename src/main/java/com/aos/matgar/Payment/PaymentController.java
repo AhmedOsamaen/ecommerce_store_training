@@ -28,9 +28,6 @@ public class PaymentController {
         System.out.println("addUserPayments" );
         User user = serviceUser.findById("13").get();
         System.out.println("addUserPayments:- "+ user.getId() );
-//		user.getPayment_arr().add(payment);
-        System.out.println("addUserPayments:- after:- "+ user );
-//		serviceUser.addUser(user);
         paymentService.addPayment(payment);
         return user.getPayment_arr();
     }

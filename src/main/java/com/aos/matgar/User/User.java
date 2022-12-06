@@ -42,8 +42,9 @@ public class User {
     @OneToMany(mappedBy = "user" , cascade = CascadeType.ALL)
     private Set<Store> stores;
 
-    @JsonIgnore
+
     @OneToMany(mappedBy = "user" , cascade = CascadeType.ALL)
+    @JsonIgnore
     private Set<Address> addresses;
 
     @JsonIgnore
