@@ -3,12 +3,17 @@ package com.aos.matgar.User;
 import com.aos.matgar.Address.Address;
 import com.aos.matgar.Group.Group;
 import com.aos.matgar.Order.Order;
+import com.aos.matgar.Payment.Payment;
 import com.aos.matgar.Product.Product;
 import com.aos.matgar.Store.Store;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import javax.persistence.*;
 import java.util.List;
@@ -16,8 +21,10 @@ import java.util.Set;
 
 
 @Entity
-
+@Data
 @Table(name = "MATGAR_USER")
+@EqualsAndHashCode(exclude = "payment_arr")
+@ToString(exclude = "payment_arr")
 public class User {
 
     @Id
@@ -34,13 +41,21 @@ public class User {
     @OneToMany(mappedBy = "user" , cascade = CascadeType.ALL)
     private Set<Store> stores;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "user" , cascade = CascadeType.ALL)
-    private Set<Address> addresses;
+//    @JsonIgnore
+//    @OneToMany(mappedBy = "user" , cascade = CascadeType.ALL)
+//    private Set<Address> addresses;
 
     @JsonIgnore
     @OneToMany(mappedBy = "user" , cascade = CascadeType.ALL)
     private Set<Order> orders;
+
+
+    @OneToMany(mappedBy = "user" , cascade = CascadeType.ALL)
+    @JsonIgnore
+    private Set<Payment> payment_arr;
+//    @JsonIgnore@JsonManagedReference
+//    @ElementCollection
+//    List<String> payment_arr;
 
     String name;
 	int age;
@@ -73,13 +88,13 @@ public class User {
         this.stores = stores;
     }
 
-    public Set<Address> getAddresses() {
-        return addresses;
-    }
-
-    public void setAddresses(Set<Address> addresses) {
-        this.addresses = addresses;
-    }
+//    public Set<Address> getAddresses() {
+//        return addresses;
+//    }
+//
+//    public void setAddresses(Set<Address> addresses) {
+//        this.addresses = addresses;
+//    }
 
     public Set<Order> getOrders() {
         return orders;

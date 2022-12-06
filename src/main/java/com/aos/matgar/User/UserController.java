@@ -26,9 +26,6 @@ public class UserController {
 	private UserService serviceUser;
 
 	@Autowired
-	private PaymentService paymentService;
-
-	@Autowired
 	private GroupService serviceGroup;
 	
 	@RequestMapping("getAllUsers")
@@ -40,17 +37,11 @@ public class UserController {
 	}
 
 	@RequestMapping("getUserPayments/{id}")
-	public List<String> getUserPayments(@PathVariable String id) throws JsonMappingException, JsonProcessingException {
+	public Set<Payment> getUserPayments(@PathVariable String id) throws JsonMappingException, JsonProcessingException {
 		return serviceUser.findById(id).get().getPayment_arr();
 	}
 
-	@RequestMapping("addUserPayments/{id}")
-	public List<String> addUserPayments(@PathVariable String id,@RequestBody List<String> payment_arr) throws JsonMappingException, JsonProcessingException {
-		User user = serviceUser.findById(id).get();
-		user.setPayment_arr(payment_arr);
-		serviceUser.addUser(user);
-		return serviceUser.findById(id).get().getPayment_arr();
-	}
+
 
 	@RequestMapping("getUserById/{id}")
 	public Optional<User> getUserById(@PathVariable String id) throws JsonMappingException, JsonProcessingException {

@@ -9,7 +9,8 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 
 public interface PaymentRepository extends
-        JpaRepository<Payment, String>{
+        JpaRepository<Payment, Long>{
     @Query(value = "SELECT * FROM MATGAR_PAYMENT WHERE Payment_id = ?1" , nativeQuery = true)
     Optional<Payment> findById(String id);
+
 }

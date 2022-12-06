@@ -16,11 +16,11 @@ public class Payment {
     @Column(name = "Payment_id")
     private long id;
 
-//    @ManyToOne()
-////    @JsonIgnore
-//    @JoinColumn(name = "user_id", referencedColumnName = "user_id" )
-//    @JsonBackReference
-//    private User user;
+    @ManyToOne()
+//    @JsonIgnore
+    @JoinColumn(name = "user_id", referencedColumnName = "user_id" )
+
+    private User user;
 
     @Column(name="Card_Name")
     private String cardName;
