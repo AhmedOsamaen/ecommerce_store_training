@@ -1,17 +1,14 @@
 package com.aos.matgar.Order;
 
 import com.aos.matgar.Address.Address;
-import com.aos.matgar.Group_Rule.Group_Rule;
-import com.aos.matgar.Product.Product;
+import com.aos.matgar.Payment.Payment;
 import com.aos.matgar.User.User;
 import com.aos.matgar.order_product.order_product;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Data
@@ -56,9 +53,9 @@ public class Order {
     @Column(name = "payment_method")
     private String paymentMethod;
 
-    
-
-
+    @OneToOne(targetEntity = Payment.class,cascade = CascadeType.MERGE )
+    @JoinColumn(name = "Payment_id",referencedColumnName = "Payment_id")
+    private Payment payment;
 
     @Column(name = "stage")
     private Stage stage;

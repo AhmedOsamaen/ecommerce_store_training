@@ -23,7 +23,8 @@ import java.util.Set;
 @Entity
 @Data
 @Table(name = "MATGAR_USER")
-@EqualsAndHashCode(exclude = "payment_arr")
+@EqualsAndHashCode(exclude = {"payment_arr","addresses"})
+//@EqualsAndHashCode(exclude = "payment_arr")
 @ToString(exclude = "payment_arr")
 public class User {
 
@@ -41,9 +42,9 @@ public class User {
     @OneToMany(mappedBy = "user" , cascade = CascadeType.ALL)
     private Set<Store> stores;
 
-//    @JsonIgnore
-//    @OneToMany(mappedBy = "user" , cascade = CascadeType.ALL)
-//    private Set<Address> addresses;
+    @JsonIgnore
+    @OneToMany(mappedBy = "user" , cascade = CascadeType.ALL)
+    private Set<Address> addresses;
 
     @JsonIgnore
     @OneToMany(mappedBy = "user" , cascade = CascadeType.ALL)
@@ -53,9 +54,6 @@ public class User {
     @OneToMany(mappedBy = "user" , cascade = CascadeType.ALL)
     @JsonIgnore
     private Set<Payment> payment_arr;
-//    @JsonIgnore@JsonManagedReference
-//    @ElementCollection
-//    List<String> payment_arr;
 
     String name;
 	int age;
