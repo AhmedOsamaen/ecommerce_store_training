@@ -12,6 +12,7 @@ import javax.persistence.Table;
 
 import com.aos.matgar.Order.Order;
 import com.aos.matgar.Product.Product;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 @Entity
@@ -25,14 +26,16 @@ public class order_product {
     private long id;
 
 	@ManyToOne
+//    @JsonIgnore
     @JoinColumn(name = "order_id")
     Order order;
 	 
     @ManyToOne
+//    @JsonIgnore
     @JoinColumn(name = "product_id")
     Product product;
 
-    Integer Quantity;
+    Integer Quantity=2;
     
    
 }
