@@ -2,12 +2,9 @@ package com.aos.matgar.User;
 import java.util.Optional;
 import java.util.Set;
 
-import com.aos.matgar.Group.Group;
 import com.aos.matgar.Group.GroupService;
-import com.aos.matgar.Group_Rule.Group_Rule;
+import com.aos.matgar.Order.Order;
 import com.aos.matgar.Payment.Payment;
-import com.aos.matgar.Payment.PaymentService;
-import com.aos.matgar.Rule.Rule;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,8 +12,9 @@ import org.springframework.web.bind.annotation.*;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.util.List;
+import java.util.stream.Stream;
 
 @RestController
 @CrossOrigin("*")
@@ -40,7 +38,22 @@ public class UserController {
 	public Set<Payment> getUserPayments(@PathVariable String id) throws JsonMappingException, JsonProcessingException {
 		return serviceUser.findById(id).get().getPayment_arr();
 	}
+	@RequestMapping("getUserOrders/{id}")
+	public Set<Order> getUserOrders(@PathVariable String id) throws JsonMappingException, JsonProcessingException {
+		return serviceUser.findById(id).get().getOrders();
+	}
 
+	@RequestMapping("getUserOrdersStage/{id}")
+	public Optional<Order> getUserOrdersStage(@PathVariable String id, @RequestBody String stage) throws JsonMappingException, JsonProcessingException {
+		System.out.println("Stage :- " + stage);
+		System.out.println("id :- " + id);
+		User user = serviceUser.findById(("13")).get();
+		System.out.println("orders:- " + user.getOrders());
+		Optional<Order> orders = serviceUser.findById(id).get().getOrders().stream()
+				.filter(order -> order.getStage().getCode().equals( stage )).findFirst();
+		System.out.println("orders strream:- " + orders);
+		return orders;
+	}
 
 
 	@RequestMapping("getUserById/{id}")
