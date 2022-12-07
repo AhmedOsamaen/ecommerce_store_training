@@ -8,6 +8,8 @@ import com.aos.matgar.Store.Store;
 import com.aos.matgar.order_product.order_product;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -17,6 +19,8 @@ import java.util.Set;
 @Data
 @Entity
 @Table(name="MATGAR_PRODUCT")
+@EqualsAndHashCode(exclude = {"order_products"})
+@ToString(exclude = {"order_products"})
 public class Product {
     @Id
     @GeneratedValue

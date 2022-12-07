@@ -4,7 +4,10 @@ import com.aos.matgar.Address.Address;
 import com.aos.matgar.Payment.Payment;
 import com.aos.matgar.User.User;
 import com.aos.matgar.order_product.order_product;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -13,12 +16,15 @@ import java.util.List;
 @Entity
 @Data
 @Table(name = "MATGAR_ORDER")
+@EqualsAndHashCode(exclude = {"order_products"})
+@ToString(exclude = {"order_products"})
 public class Order {
     @Id
     @GeneratedValue
     @Column(name = "order_id")
     private long id;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "order")
 	List<order_product> order_products;
 	

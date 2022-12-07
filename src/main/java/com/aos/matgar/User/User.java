@@ -23,9 +23,8 @@ import java.util.Set;
 @Entity
 @Data
 @Table(name = "MATGAR_USER")
-@EqualsAndHashCode(exclude = {"payment_arr","addresses"})
-//@EqualsAndHashCode(exclude = "payment_arr")
-@ToString(exclude = "payment_arr")
+@EqualsAndHashCode(exclude = {"payment_arr","addresses","orders"})
+@ToString(exclude = {"payment_arr","addresses","orders"})
 public class User {
 
     @Id
